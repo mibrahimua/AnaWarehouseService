@@ -1,8 +1,8 @@
 package service
 
 import (
-	"AnaProductService/model"
-	"AnaProductService/repository"
+	"AnaWarehouseService/model"
+	"AnaWarehouseService/repository"
 )
 
 type ProductService struct {

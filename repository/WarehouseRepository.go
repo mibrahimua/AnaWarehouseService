@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"AnaProductService/model"
+	"AnaWarehouseService/model"
 	"database/sql"
 )
 

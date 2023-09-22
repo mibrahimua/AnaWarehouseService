@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"AnaProductService/request"
-	"AnaProductService/response"
-	"AnaProductService/service"
+	"AnaWarehouseService/request"
+	"AnaWarehouseService/response"
+	"AnaWarehouseService/service"
 	"github.com/gin-gonic/gin"
 )
 

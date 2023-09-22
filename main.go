@@ -1,11 +1,11 @@
 package main
 
 import (
-	"AnaProductService/config"
-	"AnaProductService/controller"
-	"AnaProductService/docs"
-	"AnaProductService/repository"
-	"AnaProductService/service"
+	"AnaWarehouseService/config"
+	"AnaWarehouseService/controller"
+	"AnaWarehouseService/docs"
+	"AnaWarehouseService/repository"
+	"AnaWarehouseService/service"
 	_ "fmt"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
@@ -22,7 +22,7 @@ func main() {
 	productController := controller.NewProductController(productService)
 
 	docs.SwaggerInfo.Title = "Ana Store - Environment: "
-	docs.SwaggerInfo.Description = "API for product service"
+	docs.SwaggerInfo.Description = "API for warehouse service"
 	docs.SwaggerInfo.Version = "1.0"
 	docs.SwaggerInfo.Host = os.Getenv("swagger_host")
 	docs.SwaggerInfo.Schemes = []string{"http", "https"}
