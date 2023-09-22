@@ -31,10 +31,11 @@ func main() {
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// Define your routes
-	router.POST("/product", productController.StocksTransferRequest)
+	router.POST("/warehouse/transfer", productController.StocksTransferRequest)
+	router.POST("/warehouse/status", productController.UpdateStatusWarehouse)
 
 	// Start the server
-	if err := router.Run(":8081"); err != nil {
+	if err := router.Run(":8084"); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
 }

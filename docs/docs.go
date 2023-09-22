@@ -16,20 +16,47 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/product": {
+        "/warehouse/status": {
             "post": {
-                "description": "Get List of product",
+                "description": "Update status warehouse",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Get List of product",
+                "summary": "Update status warehouse",
                 "parameters": [
                     {
-                        "description": "product_name",
-                        "name": "product_name",
+                        "description": "body",
+                        "name": "body",
                         "in": "body",
                         "schema": {
-                            "$ref": "#/definitions/request.ProductRequest"
+                            "$ref": "#/definitions/request.WarehouseStatus"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Product"
+                        }
+                    }
+                }
+            }
+        },
+        "/warehouse/transfer": {
+            "post": {
+                "description": "Transfer Stock of product between warehouse",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Transfer Stock of product between warehouse",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/request.WarehouseTransferRequest"
                         }
                     }
                 ],
@@ -71,11 +98,31 @@ const docTemplate = `{
                 }
             }
         },
-        "request.ProductRequest": {
+        "request.WarehouseStatus": {
             "type": "object",
             "properties": {
-                "name": {
-                    "type": "string"
+                "id": {
+                    "type": "integer"
+                },
+                "is_active": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "request.WarehouseTransferRequest": {
+            "type": "object",
+            "properties": {
+                "from_warehouse_id": {
+                    "type": "integer"
+                },
+                "product_id": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "to_warehouse_id": {
+                    "type": "integer"
                 }
             }
         }

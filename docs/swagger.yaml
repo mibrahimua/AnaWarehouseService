@@ -16,23 +16,36 @@ definitions:
       theme:
         type: string
     type: object
-  request.ProductRequest:
+  request.WarehouseStatus:
     properties:
-      name:
-        type: string
+      id:
+        type: integer
+      is_active:
+        type: boolean
+    type: object
+  request.WarehouseTransferRequest:
+    properties:
+      from_warehouse_id:
+        type: integer
+      product_id:
+        type: integer
+      quantity:
+        type: integer
+      to_warehouse_id:
+        type: integer
     type: object
 info:
   contact: {}
 paths:
-  /product:
+  /warehouse/status:
     post:
-      description: Get List of product
+      description: Update status warehouse
       parameters:
-      - description: product_name
+      - description: body
         in: body
-        name: product_name
+        name: body
         schema:
-          $ref: '#/definitions/request.ProductRequest'
+          $ref: '#/definitions/request.WarehouseStatus'
       produces:
       - application/json
       responses:
@@ -40,5 +53,22 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/model.Product'
-      summary: Get List of product
+      summary: Update status warehouse
+  /warehouse/transfer:
+    post:
+      description: Transfer Stock of product between warehouse
+      parameters:
+      - description: body
+        in: body
+        name: body
+        schema:
+          $ref: '#/definitions/request.WarehouseTransferRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Product'
+      summary: Transfer Stock of product between warehouse
 swagger: "2.0"

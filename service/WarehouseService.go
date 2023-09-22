@@ -1,7 +1,6 @@
 package service
 
 import (
-	"AnaWarehouseService/model"
 	"AnaWarehouseService/repository"
 	"AnaWarehouseService/request"
 )
@@ -14,10 +13,10 @@ func NewProductService(warehouseRepository *repository.WarehouseRepository) *War
 	return &WarehouseService{warehouseRepository}
 }
 
-func (us *WarehouseService) StocksTransferRequest(param request.WarehouseTransferRequest) ([]model.Product, error) {
+func (us *WarehouseService) StocksTransferRequest(param request.WarehouseTransferRequest) error {
 	return us.warehouseRepository.StocksTransferRequest(param)
 }
 
-func (us *WarehouseService) UpdateStatusWarehouse(productName string) ([]model.Product, error) {
-	return us.warehouseRepository.UpdateStatusWarehouse(productName)
+func (us *WarehouseService) UpdateStatusWarehouse(param request.WarehouseStatus) error {
+	return us.warehouseRepository.UpdateStatusWarehouse(param)
 }

@@ -15,3 +15,8 @@ type WarehouseDetail struct {
 	ProductId      int    `json:"product_id"`
 	Quantity       int    `json:"quantity"`
 }
+
+type WarehouseStatus struct {
+	ID       int  `json:"id"`
+	IsActive bool `json:"is_active"`
+}
