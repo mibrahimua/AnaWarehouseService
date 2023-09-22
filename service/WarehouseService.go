@@ -3,16 +3,21 @@ package service
 import (
 	"AnaWarehouseService/model"
 	"AnaWarehouseService/repository"
+	"AnaWarehouseService/request"
 )
 
-type ProductService struct {
-	productRepository *repository.ProductRepository
+type WarehouseService struct {
+	warehouseRepository *repository.WarehouseRepository
 }
 
-func NewProductService(productRepository *repository.ProductRepository) *ProductService {
-	return &ProductService{productRepository}
+func NewProductService(warehouseRepository *repository.WarehouseRepository) *WarehouseService {
+	return &WarehouseService{warehouseRepository}
 }
 
-func (us *ProductService) GetListProductByName(productName string) ([]model.Product, error) {
-	return us.productRepository.GetListProductByName(productName)
+func (us *WarehouseService) StocksTransferRequest(param request.WarehouseTransferRequest) ([]model.Product, error) {
+	return us.warehouseRepository.StocksTransferRequest(param)
+}
+
+func (us *WarehouseService) UpdateStatusWarehouse(productName string) ([]model.Product, error) {
+	return us.warehouseRepository.UpdateStatusWarehouse(productName)
 }

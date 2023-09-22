@@ -8,10 +8,10 @@ import (
 )
 
 type ProductController struct {
-	productService *service.ProductService
+	productService *service.WarehouseService
 }
 
-func NewProductController(productService *service.ProductService) *ProductController {
+func NewProductController(productService *service.WarehouseService) *ProductController {
 	return &ProductController{productService}
 }
 
@@ -21,8 +21,8 @@ func NewProductController(productService *service.ProductService) *ProductContro
 // @Param product_name body request.ProductRequest false "product_name"
 // @Success		200	{object} model.Product
 // @Router			/product [post]
-func (uc *ProductController) GetListProductByName(c *gin.Context) {
-	request := request.ProductRequest{}
+func (uc *ProductController) StocksTransferRequest(c *gin.Context) {
+	request := request.WarehouseTransferRequest{}
 	if err := c.ShouldBindJSON(&request); err != nil {
 		c.JSON(400, response.Response{
 			Status:  "error",
@@ -30,7 +30,7 @@ func (uc *ProductController) GetListProductByName(c *gin.Context) {
 		})
 	}
 
-	data, err := uc.productService.GetListProductByName(request.Name)
+	data, err := uc.productService.StocksTransferRequest(request)
 	if err != nil {
 		c.JSON(400, response.Response{
 			Status:  "error",

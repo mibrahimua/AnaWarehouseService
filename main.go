@@ -31,7 +31,7 @@ func main() {
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// Define your routes
-	router.POST("/product", productController.GetListProductByName)
+	router.POST("/product", productController.StocksTransferRequest)
 
 	// Start the server
 	if err := router.Run(":8081"); err != nil {
